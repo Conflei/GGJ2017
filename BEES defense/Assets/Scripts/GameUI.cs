@@ -55,14 +55,19 @@ public class GameUI : Singleton<GameUI> {
 		}
 	}
 
-	public void ScreenClickDown(Vector2 screenPos)
+	public void ScreenClickDown(MapTile tileScript)
 	{
 		//click outside
 		if (openedMenu_) {
 			ScreenClickUp ();
 			return;
 		}
-		dynamicMenu_.transform.position = screenPos;
+
+		if (GameController.Instance.occupiedHand) {
+			GameController.Instance.SetObjectAt (tileScript);
+			return;
+		}
+		dynamicMenu_.transform.position = Camera.main.WorldToScreenPoint(tileScript.tilePosition_);
 		iTween.ScaleTo (dynamicMenu_, iTween.Hash ("scale", Vector3.one, "time", scaleTime_, "easeType", iTween.EaseType.easeOutExpo));
 		openedMenu_ = true;
 	}

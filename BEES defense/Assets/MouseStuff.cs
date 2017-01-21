@@ -39,7 +39,7 @@ public class MouseStuff : MonoBehaviour {
 
 
 
-    if(Input.GetMouseButtonDown(0))
+    /*if(Input.GetMouseButtonDown(0))
     {
 			//UI Handling
 			GameUI.Instance.ScreenClickDown (Input.mousePosition);
@@ -51,7 +51,7 @@ public class MouseStuff : MonoBehaviour {
       {
         coll.GetComponent<SpriteRenderer>().color = Color.blue;
       }
-    }
+    }*/
 			
 	}
 }

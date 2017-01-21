@@ -21,6 +21,7 @@ public class DefensesHandler : Singleton<DefensesHandler> {
 	{
 		Debug.Log ("Create new defense type " + type);
 		GameObject newDefense = Instantiate (defenses_ [type] as GameObject);
+		newDefense.GetComponent<Defense> ().Init ((Defense.typeOfDefense)type);
 		newDefense.transform.parent = this.transform;
 		GameController.Instance.SetDefenseToHand (newDefense);
 	}
