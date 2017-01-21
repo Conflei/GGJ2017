@@ -11,7 +11,7 @@ public class MapTile : MonoBehaviour {
   [Header("True if something has been built on this location")]
   public bool Occupied = false;
 
-   private Vector3 tilePosition_ { get; set;}
+	public  Vector3 tilePosition_ { get; set;}
 
   //Reference to the tower or trap on this tile?
 

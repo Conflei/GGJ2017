@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class EconomicSystem : Singleton<EconomicSystem> {
 
-	public enum Consumables{
-		Bee,
-		PoisonIvy,
-		Sunflower,
-		Venus
-	}
-
 	[SerializeField] private int[] prices;
 	[SerializeField] private int startMoney;
 	[SerializeField] private int currentHoney;

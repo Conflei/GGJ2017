@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : Singleton<GameController> {
 
-	private bool occupiedHand;
+	public bool occupiedHand{ get; set;}
 	private GameObject onHandGO;
 
 	// Use this for initialization
@@ -15,7 +15,8 @@ public class GameController : Singleton<GameController> {
 	// Update is called once per frame
 	void Update () {
 		if (occupiedHand) {
-			onHandGO.transform.position = Input.mousePosition;
+			onHandGO.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			onHandGO.transform.position = new Vector3 (onHandGO.transform.position.x, onHandGO.transform.position.y, 0f);
 		}
 	}
 
@@ -29,5 +30,22 @@ public class GameController : Singleton<GameController> {
 	{
 		occupiedHand = true;
 		onHandGO = defense;
+	}
+
+	public void SetObjectAt(MapTile tileScript)
+	{
+		if (tileScript.Occupied)
+			return;
+
+		if (tileScript.Blocked)
+			return;
+
+		if (tileScript.Path && onHandGO.GetComponent<Defense> ().myType_ != Defense.typeOfDefense.Ivy)
+			return;
+		
+		occupiedHand = false;
+		onHandGO.transform.position = tileScript.tilePosition_;
+		tileScript.Occupied = true;
+
 	}
 }
