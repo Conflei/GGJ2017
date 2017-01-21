@@ -14,8 +14,11 @@ public class EnemyMovement : MonoBehaviour {
   public float wanderStepDistance = 0.5f;
   public float wanderMagnitude = 0.16f;
 
-	// Use this for initialization
-	void Start () {
+  public int Health = 10;
+  //Will need animator for... animating stuff.
+
+  // Use this for initialization
+  protected virtual void Start () {
     currentSourcePoint = transform.position;
     currentDestinationPoint = majorWaypoints[0];
     CalcWanderPoint();
@@ -24,7 +27,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
     //Vector3 diff = currentDestinationPoint - transform.position;
 
     //if (diff.magnitude < wanderMagnitude)
@@ -81,7 +84,7 @@ public class EnemyMovement : MonoBehaviour {
     
   }
 
-  void OnDrawGizmosSelected()
+  protected virtual void OnDrawGizmosSelected()
   {
 
     Gizmos.DrawLine(currentSourcePoint, currentDestinationPoint);
@@ -96,4 +99,26 @@ public class EnemyMovement : MonoBehaviour {
     }
 
   }
+
+  public virtual void TakeHit(int dmgAmount)
+  {
+    //Spawn some kind of hit effect?  Glowy blue blood spatters maybe?
+    Health -= dmgAmount;
+    if (Health <= 0)
+      Die();
+  }
+
+  public virtual void Die()
+  {
+    //TODO: Set off dying animation
+    Destroy(gameObject, 1);
+  }
+
+  public virtual void KillFlower(Flower targetFlower)
+  {
+    //TODO: Set off animation for destroying the flower
+    Destroy(targetFlower.gameObject);
+    Destroy(gameObject);
+  }
+
 }

@@ -82,11 +82,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BeeMovement.cs" />
+    <Compile Include="Assets\EnemyMovement.cs" />
+    <Compile Include="Assets\EnemyShooter.cs" />
+    <Compile Include="Assets\EnemySpawner.cs" />
     <Compile Include="Assets\Flower.cs" />
+    <Compile Include="Assets\FlowerBox.cs" />
     <Compile Include="Assets\MapTile.cs" />
     <Compile Include="Assets\MouseStuff.cs" />
     <Compile Include="Assets\Scripts\CustomEventTrigger.cs" />
+    <Compile Include="Assets\Scripts\DefensesHandler.cs" />
     <Compile Include="Assets\Scripts\EconomicSystem.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GameUI.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
   </ItemGroup>
