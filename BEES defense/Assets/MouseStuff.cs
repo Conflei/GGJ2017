@@ -10,7 +10,7 @@ public class MouseStuff : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-    Debug.Log("MouseStuff.Start");		
+    //Debug.Log("MouseStuff.Start");		
 	}
 
   void OnEnable()
@@ -18,7 +18,7 @@ public class MouseStuff : MonoBehaviour {
 
     if(instance && instance != this)
     {
-      Debug.Log("Whops, duplicate target position");
+      //Debug.Log("Whops, duplicate target position");
       this.enabled = false;
     }
     else
