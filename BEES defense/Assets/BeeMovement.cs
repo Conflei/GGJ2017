@@ -18,6 +18,12 @@ public class BeeMovement : MonoBehaviour {
   public float boidsDelay = 0.25f;
   private float boidsDelayRemaining = 0.25f;
 
+  public bool bUseFlockingSineWave = false;
+  public float SineInput;
+  public float SineFrequencyMult = 1;
+  public float SineValue;
+  public float SineMult = 1;
+
 
   public float jitterAmount = 0.01f;
 
@@ -51,24 +57,30 @@ public class BeeMovement : MonoBehaviour {
     //Jitter a little
     Vector2 jitter = (Random.insideUnitCircle * jitterAmount * Time.deltaTime);
      
-    //Boids stuff?		
 
+    //Boids! Well, not really, but some kind of flocking behavior
     Vector2 boids = new Vector2();
 
-    //boidsDelayRemaining -= Time.deltaTime;
+    //Sine wave added to the boids calculations
+    float tempDesiredDistance = 1;
 
+    if(bUseFlockingSineWave)
+    {
+      SineInput += Time.deltaTime * SineFrequencyMult;
+      SineValue = Mathf.Sin(SineInput);
+      tempDesiredDistance = boidsDesiredDistance + SineValue * SineMult;
+    }
 
-    //if (boidsDelayRemaining <= 0)
     if(Random.value > 0.5f)
     {
-      Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, boidsDetection);
+      Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, boidsDetection, LayerMask.GetMask("Bees"));
       foreach (Collider2D c in colls)
       {
         if (c.gameObject != gameObject)
         {
           Vector2 diff = c.transform.position - transform.position;
           float mag = diff.magnitude;
-          if (mag > boidsDesiredDistance)
+          if (mag > tempDesiredDistance)
           {
             //It's outside desired range, so we move towards it
             boids += diff;
@@ -78,15 +90,13 @@ public class BeeMovement : MonoBehaviour {
           {
             Vector2 runaway;
             runaway = -diff.normalized;
-            runaway *= boidsSeparateForce * (1 - mag);
+            runaway *= boidsSeparateForce * (tempDesiredDistance - mag);
             boids += runaway;
           }
         }
-
       }
 
-      Debug.Log(boids);
-
+      
       boids.Normalize();
       boids *= boidsMagnitude * Time.deltaTime;
       boidsDelayRemaining = boidsDelay + Random.Range(-0.1f, 0.1f);
@@ -102,9 +112,7 @@ public class BeeMovement : MonoBehaviour {
     
 
     transform.position = newPosition;
-
-    Debug.Log("Test test test");
-
+    
 
   }
 }

@@ -26,6 +26,11 @@ public class EconomicSystem : Singleton<EconomicSystem> {
 		
 	}
 
+  public void AddHoney(int Amount)
+  {
+    currentHoney += Amount;
+  }
+
 	public void BuyItem(int consu)
 	{
 		Debug.Log ("Buy Item");
