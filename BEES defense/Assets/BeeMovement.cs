@@ -73,6 +73,7 @@ public class BeeMovement : MonoBehaviour {
 
     if(Random.value > 0.5f)
     {
+      float runawayMult = Random.value;
       Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, boidsDetection, LayerMask.GetMask("Bees"));
       foreach (Collider2D c in colls)
       {
@@ -88,10 +89,15 @@ public class BeeMovement : MonoBehaviour {
           }
           else
           {
+            
             Vector2 runaway;
             runaway = -diff.normalized;
             runaway *= boidsSeparateForce * (tempDesiredDistance - mag);
-            boids += runaway;
+            //I want a few to hang out more in the center, so lets put a random onto here...
+            //runaway *= runawayMult;
+            if(runawayMult > 0.5f)
+              boids += runaway;
+
           }
         }
       }
