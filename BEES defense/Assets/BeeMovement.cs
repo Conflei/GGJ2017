@@ -89,6 +89,7 @@ public class BeeMovement : MonoBehaviour {
 
     transform.position = newPosition;
 
+    Debug.Log("Test test test");
 
 
   }

@@ -81,9 +81,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="BEES defense.CSharp.Plugins.csproj">
+      <Project>{33600883-AD15-2869-F7D2-0C9EC221F039}</Project>
+      <Name>BEES defense.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\BeeMovement.cs" />
     <Compile Include="Assets\MapTile.cs" />
     <Compile Include="Assets\MouseStuff.cs" />
+    <Compile Include="Assets\Scripts\CustomEventTrigger.cs" />
+    <Compile Include="Assets\Scripts\EconomicSystem.cs" />
+    <Compile Include="Assets\Scripts\GameUI.cs" />
+    <Compile Include="Assets\Scripts\Singleton.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
