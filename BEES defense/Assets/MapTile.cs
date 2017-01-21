@@ -11,11 +11,13 @@ public class MapTile : MonoBehaviour {
   [Header("True if something has been built on this location")]
   public bool Occupied = false;
 
+   private Vector3 tilePosition_ { get; set;}
+
   //Reference to the tower or trap on this tile?
 
 	// Use this for initialization
 	void Start () {
-		
+		tilePosition_ = this.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -48,5 +50,11 @@ public class MapTile : MonoBehaviour {
 
 
     }
+
+	public void ChangeState(bool occupied)
+	{
+		this.Occupied = occupied;
+		GameController.Instance.FreeTileClicked (this);
+	}
 
 }

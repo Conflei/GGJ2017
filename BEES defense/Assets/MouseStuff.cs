@@ -41,6 +41,10 @@ public class MouseStuff : MonoBehaviour {
 
     if(Input.GetMouseButtonDown(0))
     {
+			//UI Handling
+			GameUI.Instance.ScreenClickDown (Input.mousePosition);
+
+
       Collider2D coll = Physics2D.OverlapPoint(transform.position, LayerMask.GetMask("Tiles"));
       //There should only be one...
       if(coll)
@@ -48,5 +52,6 @@ public class MouseStuff : MonoBehaviour {
         coll.GetComponent<SpriteRenderer>().color = Color.blue;
       }
     }
+			
 	}
 }
