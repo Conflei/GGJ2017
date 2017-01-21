@@ -34,11 +34,14 @@ public class EconomicSystem : Singleton<EconomicSystem> {
 
 	public void BuyItem(int consu)
 	{
+		Debug.Log ("Buy Item");
 		if (currentHoney - prices [consu] >= 0) {
 			currentHoney -= prices [consu];
 			GameUI.Instance.SetHoneyCount (currentHoney);
 			Debug.Log ("Element Bought: " + consu + " Money Left: " + currentHoney);
-
+			if (consu > 0) {
+				DefensesHandler.Instance.CreateDefense (consu - 1);
+			}
 			//Instanciate element
 		} else {
 			Debug.Log ("No Enought Money");
