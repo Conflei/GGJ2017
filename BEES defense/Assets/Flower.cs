@@ -25,6 +25,7 @@ public class Flower : MonoBehaviour {
       //Particle system, or halo, or something along those lines?
       //Probably better with particle system
       GetComponent<SpriteRenderer>().color = Color.yellow;
+      generateTimeRemaining = generateTime;
     }
 	}
 
@@ -38,7 +39,9 @@ public class Flower : MonoBehaviour {
       GetComponent<SpriteRenderer>().color = Color.white;
       //Add money to the player's cash total
 
+      EconomicSystem.Instance.AddHoney(moneyAmount);
       moneyAmount = 0;
+      
 
     }
 

@@ -22,6 +22,7 @@ public class EconomicSystem : Singleton<EconomicSystem> {
   public void AddHoney(int Amount)
   {
     currentHoney += Amount;
+    GameUI.Instance.SetHoneyCount(currentHoney);
   }
 
 	public void BuyItem(int consu)
