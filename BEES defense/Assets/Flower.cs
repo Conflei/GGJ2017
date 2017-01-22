@@ -10,9 +10,12 @@ public class Flower : MonoBehaviour {
   public float generateTime = 30;
   private float generateTimeRemaining = 30;
 
+  private Animator am;
+
 	// Use this for initialization
 	void Start () {
-    generateTimeRemaining = generateTime;	
+    generateTimeRemaining = generateTime;
+    am = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -22,8 +25,8 @@ public class Flower : MonoBehaviour {
     if(generateTimeRemaining <= 0)
     {
       moneyAmount = generateAmount;
-      //Particle system, or halo, or something along those lines?
-      //Probably better with particle system
+      am.SetTrigger("Ready");
+      
       GetComponent<SpriteRenderer>().color = Color.yellow;
       generateTimeRemaining = generateTime;
     }
@@ -41,6 +44,7 @@ public class Flower : MonoBehaviour {
 
       EconomicSystem.Instance.AddHoney(moneyAmount);
       moneyAmount = 0;
+      am.SetTrigger("Idle");
       
 
     }
