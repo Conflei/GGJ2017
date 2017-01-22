@@ -75,7 +75,6 @@ public class EnemySpawner : MonoBehaviour {
 
   private IEnumerator SpawnAfterDelay(System.Collections.Generic.List<Vector3> path, int enemyCount, int enemiesPerWave, EnemyMovement enemyPrefab, float waitTime, float waveDelay)
   {
-    Debug.Log("ehhh what now");
     yield return new WaitForSeconds(waveDelay);
 
     StartCoroutine(SpawnOverTime(path, enemyCount, enemiesPerWave, enemyPrefab, waitTime));
@@ -115,6 +114,9 @@ public class EnemySpawner : MonoBehaviour {
         StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
         break;
       case 2:
+        StartCoroutine(SpawnAfterDelay(leftPath, 20, 1, runnerPrefab, 0.5f, 5f));
+        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
+        StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
         break;
       case 3:
       case 4:

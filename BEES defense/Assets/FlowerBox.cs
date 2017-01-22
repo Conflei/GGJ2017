@@ -21,4 +21,20 @@ public class FlowerBox : MonoBehaviour {
     return GetComponentInChildren<Flower>();
   }
 
+  public virtual void OnTriggerEnter2D(Collider2D coll)
+  {
+    EnemyMovement em = coll.GetComponent<EnemyMovement>();
+    if(em)
+    {
+      Flower target = FindFlower();
+      if (target)
+      {
+        em.KillFlower(target);
+      }
+      else
+        em.Die();
+    }
+
+
+  }
 }

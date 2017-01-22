@@ -48,7 +48,8 @@ public class BeeMovement : MonoBehaviour {
 
     //Cheese nonphysics!
     if(bFollowMouse)
-      newPosition = Vector3.MoveTowards(transform.position, moveTarget.position, speed * Time.deltaTime);
+      if((moveTarget.position - transform.position).magnitude > boidsDesiredDistance)
+        newPosition = Vector3.MoveTowards(transform.position, moveTarget.position, speed * Time.deltaTime);
     else
     {
       newPosition = transform.position;
@@ -83,6 +84,8 @@ public class BeeMovement : MonoBehaviour {
           float mag = diff.magnitude;
           if (mag > tempDesiredDistance)
           {
+            diff.Normalize();
+            diff *= mag - tempDesiredDistance;
             //It's outside desired range, so we move towards it
             boids += diff;
 

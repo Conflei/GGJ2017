@@ -17,44 +17,29 @@ public class EnemyMovement : MonoBehaviour {
   public int Health = 10;
   //Will need animator for... animating stuff.
 
+  private Animator am;
+
   // Use this for initialization
   protected virtual void Start () {
     currentSourcePoint = transform.position;
-    currentDestinationPoint = majorWaypoints[0];
+    if(majorWaypoints.Count > 0)
+      currentDestinationPoint = majorWaypoints[0];
     CalcWanderPoint();
-    Debug.Log("EnemyMovement.Start");
-    
-	}
+    //Debug.Log("EnemyMovement.Start");
+    am = GetComponent<Animator>();
+
+  }
 	
 	// Update is called once per frame
 	protected virtual void Update () {
-    //Vector3 diff = currentDestinationPoint - transform.position;
-
-    //if (diff.magnitude < wanderMagnitude)
-    //if (false) 
-    //{
-    //  currentSourcePoint = currentDestinationPoint;
-    //  if(majorWaypoints.Count > 0)
-    //  {
-    //    currentDestinationPoint = majorWaypoints[0];
-    //    majorWaypoints.RemoveAt(0);
-    //    //I'd just use a queue, but the unity editor doesn't display those as conveniently
-    //    CalcWanderPoint();
-    //  }
-      
-      
-    //}
-    //else
+    
+    Vector3 wanderDiff = currentWanderPoint - transform.position;
+    if(wanderDiff.magnitude < wanderMagnitude)
     {
-      Vector3 wanderDiff = currentWanderPoint - transform.position;
-      if(wanderDiff.magnitude < wanderMagnitude)
-      {
-        CalcWanderPoint();
-      }
+      CalcWanderPoint();
     }
+    
     transform.position = Vector3.MoveTowards(transform.position, currentWanderPoint, speed * Time.deltaTime);
-
-
   }
 
   void CalcWanderPoint()
@@ -111,13 +96,26 @@ public class EnemyMovement : MonoBehaviour {
   public virtual void Die()
   {
     //TODO: Set off dying animation
+
+    
+    am.SetTrigger("Die");
     Destroy(gameObject, 1);
+    this.enabled = false;
+
   }
 
   public virtual void KillFlower(Flower targetFlower)
   {
     //TODO: Set off animation for destroying the flower
+    am.SetTrigger("Die");
+    Destroy(gameObject, 1);
     Destroy(targetFlower.gameObject);
+    this.enabled = false;
+  }
+
+  
+  public virtual void DieImmediate()
+  {
     Destroy(gameObject);
   }
 
