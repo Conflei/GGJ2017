@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
+  damage: 10
+  remainingLifespan: 1
   moveVector: {x: 0, y: 0, z: 0}
 --- !u!212 &212871601654622302
 SpriteRenderer:

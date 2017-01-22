@@ -30,11 +30,11 @@ public class GameController : Singleton<GameController> {
 
 	// Use this for initialization
 	public IEnumerator Start () {
-		onDay = true;
+    GameUI.Instance.HideGameOver();
+    onDay = true;
 		occupiedHand = false;
 		GameUI.Instance.courtine.color = Color.white;
 		yield return StartCoroutine (GameUI.Instance.HideCourtine ());
-    GameUI.Instance.HideGameOver();
 		StartCoroutine (GameUI.Instance.BeginTime (minPerDay, secPerDay));
 		yield return null;
 	}

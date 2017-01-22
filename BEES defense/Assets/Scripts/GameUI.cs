@@ -78,7 +78,7 @@ public class GameUI : Singleton<GameUI> {
 				minutes--;
 				seconds = 59;
 			}
-			timerText_.text = minutes + ":" + seconds;
+      timerText_.text = minutes + ":" + seconds.ToString("00") ;
 
 
 			seconds -= 1;

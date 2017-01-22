@@ -34,7 +34,7 @@ public class SplashScreen : MonoBehaviour {
 			FadeScreen.CrossFadeAlpha (1f, 1f, true);
 
 			//begin scene
-			//UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+			UnityEngine.SceneManagement.SceneManager.LoadScene(1);
 		} else {
 			Debug.Log ("Still Bees");
 		}
