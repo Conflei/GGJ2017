@@ -23,8 +23,10 @@ public class GameController : Singleton<GameController> {
 
 	public SpriteRenderer bgMap;
 	public Sprite[] dayNightSprites;
+
   public AudioSource daySounds;
   public AudioSource nightSounds;
+  public AudioSource waterSounds;
 
 	// Use this for initialization
 	public IEnumerator Start () {
@@ -32,6 +34,7 @@ public class GameController : Singleton<GameController> {
 		occupiedHand = false;
 		GameUI.Instance.courtine.color = Color.white;
 		yield return StartCoroutine (GameUI.Instance.HideCourtine ());
+    GameUI.Instance.HideGameOver();
 		StartCoroutine (GameUI.Instance.BeginTime (minPerDay, secPerDay));
 		yield return null;
 	}
@@ -151,4 +154,12 @@ public class GameController : Singleton<GameController> {
 		yield return null;
 
 	}
+
+  public void GameOver()
+  {
+    daySounds.Stop();
+    nightSounds.Stop();
+    waterSounds.Stop();
+    GameUI.Instance.ShowGameOver();
+  }
 }

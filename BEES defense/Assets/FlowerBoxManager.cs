@@ -21,6 +21,7 @@ public class FlowerBoxManager : MonoBehaviour {
       if (!f)
       {
         Debug.Log("GAME OVER!!!");
+        GameController.Instance.GameOver();
         gameOver = true;
       }
       timeCheck = 10f;
