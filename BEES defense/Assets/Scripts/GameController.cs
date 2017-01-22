@@ -76,6 +76,8 @@ public class GameController : Singleton<GameController> {
 
 		usingMachineGun_ = machineGuns_ [machine];
 
+		usingMachineGun_.GetComponent<Animator> ().SetTrigger ("ActivateTurret");
+
 		shootingMode_ = true;
 
 		GameUI.Instance.EnterAimMode ();
@@ -83,6 +85,8 @@ public class GameController : Singleton<GameController> {
 
 	public void ExitShootingMode()
 	{
+		
+		usingMachineGun_.GetComponent<Animator> ().SetTrigger ("DeactivateTurret");
 		shootingMode_ = false;
 
 		GameUI.Instance.ExitAimMode ();
