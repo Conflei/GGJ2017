@@ -12,7 +12,7 @@ public class BeeHandler : Singleton<BeeHandler> {
 		GameUI.Instance.SetBeeCount (beeCount_);
 
 		for (int i = 0; i < beeCount_; i++) {
-			GameObject newBee = Instantiate (beePrefab_, this.transform, true) as GameObject;
+			GameObject newBee = Instantiate (beePrefab_, this.transform, true, this.transform) as GameObject;
 		}
 	}
 
@@ -21,7 +21,7 @@ public class BeeHandler : Singleton<BeeHandler> {
 	/// </summary>
 	public void MakeBee()
 	{
-		GameObject newBee = Instantiate (beePrefab_, this.transform, true) as GameObject;
+		GameObject newBee = Instantiate (beePrefab_, this.transform, true, this.transform) as GameObject;
 		beeCount_++;
 		GameUI.Instance.SetBeeCount (beeCount_);
 	}
