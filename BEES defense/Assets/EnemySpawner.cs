@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner> {
 
+  public bool TestNextWave;
+
   public bool TestLeftPath;
   public bool TestMidPath;
   public bool TestRightPath;
@@ -17,6 +19,7 @@ public class EnemySpawner : Singleton<EnemySpawner> {
   public System.Collections.Generic.List<Vector3> rightPath;
 
   public EnemyMovement runnerPrefab;
+  public EnemyMovement shooterPrefab;
 
   // Use this for initialization
 	void Start () {
@@ -41,7 +44,11 @@ public class EnemySpawner : Singleton<EnemySpawner> {
       TestRightPath = false;
       //SpawnPath(rightPath, 10, runnerPrefab);
       StartCoroutine(SpawnOverTime(rightPath, 10, 1,  runnerPrefab, 0.5f));
-      
+    }
+    if(TestNextWave)
+    {
+      TestNextWave = false;
+      SpawnNextWave();
     }
   }
 
@@ -109,16 +116,23 @@ public class EnemySpawner : Singleton<EnemySpawner> {
     switch(waveNumber)
     {
       case 1:
+        StartCoroutine(SpawnAfterDelay(rightPath, 1, 1, shooterPrefab, 1f, 5f));
         StartCoroutine(SpawnAfterDelay(rightPath, 10, 1, runnerPrefab, 0.5f, 5f));
-        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
         StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
+        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
         break;
       case 2:
         StartCoroutine(SpawnAfterDelay(leftPath, 20, 1, runnerPrefab, 0.5f, 5f));
-        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
         StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
+        StartCoroutine(SpawnAfterDelay(rightPath, 5, 1, shooterPrefab, 10f, 1f));
+        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
         break;
       case 3:
+        StartCoroutine(SpawnAfterDelay(leftPath, 20, 1, runnerPrefab, 0.5f, 5f));
+        StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
+        StartCoroutine(SpawnAfterDelay(rightPath, 5, 1, shooterPrefab, 2f, 10f));
+        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
+        break;
       case 4:
       case 5:
       case 6:
@@ -129,6 +143,7 @@ public class EnemySpawner : Singleton<EnemySpawner> {
         break;
       default:
         //Some kind of scaling, maybe randomized distribution
+
         break;
     }
   }

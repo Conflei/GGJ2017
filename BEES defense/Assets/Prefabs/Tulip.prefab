@@ -9,49 +9,64 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1835645542965966}
+  m_RootGameObject: {fileID: 1552904200920770}
   m_IsPrefabParent: 1
---- !u!1 &1835645542965966
+--- !u!1 &1552904200920770
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4509520271677528}
-  - component: {fileID: 212533132847071140}
-  - component: {fileID: 95858397402090324}
-  - component: {fileID: 114504430173462834}
-  m_Layer: 0
-  m_Name: Enemy B Walking1
-  m_TagString: Alien
+  - component: {fileID: 4451606474856536}
+  - component: {fileID: 212735486974889000}
+  - component: {fileID: 114177760633950184}
+  - component: {fileID: 58380551901271984}
+  - component: {fileID: 95236614296820578}
+  m_Layer: 10
+  m_Name: Tulip
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4509520271677528
+--- !u!4 &4451606474856536
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1835645542965966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8433685, y: -4.340689, z: 0}
+  m_GameObject: {fileID: 1552904200920770}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.149, y: -0.599, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95858397402090324
+--- !u!58 &58380551901271984
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552904200920770}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!95 &95236614296820578
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1835645542965966}
+  m_GameObject: {fileID: 1552904200920770}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 52033a0202cb72f46bb2f3928d131db1, type: 2}
+  m_Controller: {fileID: 9100000, guid: df025cab710c316469d9cd0704856eee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -59,37 +74,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114504430173462834
+--- !u!114 &114177760633950184
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1835645542965966}
+  m_GameObject: {fileID: 1552904200920770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffbfbb35183bc7b4c96e6e39595687c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 862d20dcecde02d4c84bd489c5cb7bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  majorWaypoints: []
-  currentSourcePoint: {x: 0, y: 0, z: 0}
-  currentDestinationPoint: {x: 0, y: 0, z: 0}
-  currentWanderPoint: {x: 0, y: 0, z: 0}
-  wanderStepDistance: 0.5
-  wanderMagnitude: 0.16
-  Health: 10
-  reloadTime: 1
-  reloadTimeRemaining: 0
-  scanTime: 0.25
-  scanTimeRemaining: 0
-  scanRange: 0
-  enemyProjectilePrefab: {fileID: 0}
---- !u!212 &212533132847071140
+  moneyAmount: 0
+  generateAmount: 5
+  generateTime: 20
+--- !u!212 &212735486974889000
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1835645542965966}
+  m_GameObject: {fileID: 1552904200920770}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -115,7 +119,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 715bf5569300fe24aaf22ca73d90b9aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0471cdb173b548a469c665ae0740e11d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

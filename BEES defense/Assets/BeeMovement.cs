@@ -27,16 +27,23 @@ public class BeeMovement : MonoBehaviour {
 
   public float jitterAmount = 0.01f;
 
+  public bool bFacingLeft = false;
+
   [Header("Debug stuff")]
   public Vector3 boidsDebug;
   public Vector3 jitterDebug;
 
 
+  private SpriteRenderer sr;
+  private Animator am;
 
   // Use this for initialization
   void Start () {
     moveTarget = MouseStuff.instance.transform;
-
+    sr = GetComponent<SpriteRenderer>();
+    am = GetComponent<Animator>();
+    //TODO: This isn't working the way I want - Want to offset the animations so they're not all synchronized
+    am.SetTime(Random.value);
   }
 
 
@@ -104,13 +111,11 @@ public class BeeMovement : MonoBehaviour {
           }
         }
       }
-
       
       boids.Normalize();
       boids *= boidsMagnitude * Time.deltaTime;
       boidsDelayRemaining = boidsDelay + Random.Range(-0.1f, 0.1f);
     }
-
 
     newPosition += jitter;
     newPosition += boids;
@@ -118,7 +123,23 @@ public class BeeMovement : MonoBehaviour {
     boidsDebug = boids;
     jitterDebug = jitter;
 
-    
+    newPosition.x = Mathf.Clamp(newPosition.x, -5.76f, 5.76f);
+    newPosition.y = Mathf.Clamp(newPosition.y, -4.48f, 4.48f);
+
+    if ((newPosition - (Vector2)transform.position).x > 0)
+    {
+      if (!bFacingLeft)
+        sr.flipX = false;
+      else
+        bFacingLeft = false;
+    }
+    else
+    {
+      if (bFacingLeft)
+        sr.flipX = true;
+      else
+        bFacingLeft = true;
+    }
 
     transform.position = newPosition;
     

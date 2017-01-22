@@ -17,7 +17,8 @@ public class EnemyMovement : MonoBehaviour {
   public int Health = 10;
   //Will need animator for... animating stuff.
 
-  private Animator am;
+  protected Animator am;
+  protected SpriteRenderer sr;
 
   // Use this for initialization
   protected virtual void Start () {
@@ -27,7 +28,7 @@ public class EnemyMovement : MonoBehaviour {
     CalcWanderPoint();
     //Debug.Log("EnemyMovement.Start");
     am = GetComponent<Animator>();
-
+    sr = GetComponent<SpriteRenderer>();
   }
 	
 	// Update is called once per frame
@@ -38,8 +39,18 @@ public class EnemyMovement : MonoBehaviour {
     {
       CalcWanderPoint();
     }
-    
-    transform.position = Vector3.MoveTowards(transform.position, currentWanderPoint, speed * Time.deltaTime);
+    Vector3 newPos = Vector3.MoveTowards(transform.position, currentWanderPoint, speed * Time.deltaTime);
+
+    if ((newPos - transform.position).x > 0)
+    {
+      sr.flipX = true;
+    }
+    else
+    {
+      sr.flipX = false;
+    }
+    transform.position = newPos;
+
   }
 
   void CalcWanderPoint()

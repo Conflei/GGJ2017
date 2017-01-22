@@ -13,7 +13,12 @@ public class EnemyShooter : EnemyMovement {
 
   public float scanRange;
 
-  public Transform enemyProjectilePrefab;
+  public EnemyProjectile enemyProjectilePrefab;
+  public Vector3 ProjectileOffset;
+
+
+  public bool bTestDie;
+  public bool bTestShoot;
 
   // Use this for initialization
   protected override void Start () {
@@ -26,6 +31,18 @@ public class EnemyShooter : EnemyMovement {
 	protected override void Update () {
     base.Update();
 
+    if(bTestDie)
+    {
+      Die();
+    }
+
+    if(bTestShoot)
+    {
+      am.SetTrigger("Shoot");
+      bTestShoot = false;
+    }
+
+
     reloadTimeRemaining -= Time.deltaTime;
     if(reloadTimeRemaining <= 0)
     {
@@ -36,7 +53,13 @@ public class EnemyShooter : EnemyMovement {
         if(target)
         {
           //TODO: Instantiate projectile and point it at the target
-          Debug.Log("Shooty alien is shooting!");
+          EnemyProjectile ep = Instantiate<EnemyProjectile>(enemyProjectilePrefab);
+          ep.transform.position = transform.position + ProjectileOffset;
+          ep.moveVector = (target.transform.position - ep.transform.position);
+
+          am.SetTrigger("Shoot");
+          
+
           reloadTimeRemaining = reloadTime;
         }
         scanTimeRemaining = scanTime;
@@ -50,6 +73,9 @@ public class EnemyShooter : EnemyMovement {
     base.OnDrawGizmosSelected();
     Gizmos.color = Color.green;
     Gizmos.DrawWireSphere(transform.position, scanRange);
+
+    Gizmos.color = Color.white;
+    Gizmos.DrawWireSphere(transform.position + ProjectileOffset, 0.1f);
 
   }
 }

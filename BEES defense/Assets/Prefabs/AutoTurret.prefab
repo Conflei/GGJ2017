@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212286089484784096}
   - component: {fileID: 61762931677602762}
   - component: {fileID: 114183076825824894}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mob
   m_TagString: Defense
   m_Icon: {fileID: 0}
@@ -170,7 +170,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1727007247409050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0.17410147, y: -1.529139, z: 0}
+=======
+  m_LocalPosition: {x: -0.832, y: -2.538, z: 0}
+>>>>>>> 652f53349117ae97720fa5495b468d73e7a48d17
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4771291628901828}
