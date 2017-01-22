@@ -127,7 +127,7 @@ public class GameController : Singleton<GameController> {
 		bgMap.sprite = dayNightSprites [1];
 		yield return StartCoroutine (GameUI.Instance.HideCourtine ());
 		EnemySpawner.Instance.SpawnNextWave ();
-
+		GameUI.Instance.IncreaseWave ();
 		yield return null;
 
 	}
