@@ -14,6 +14,9 @@ public class EnemyMovement : MonoBehaviour {
   public float wanderStepDistance = 0.5f;
   public float wanderMagnitude = 0.16f;
 
+  public float speedMultiplier = 1;
+  public float slowTime = 0;
+
   public int Health = 10;
   //Will need animator for... animating stuff.
 
@@ -34,12 +37,20 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	protected virtual void Update () {
     
+    if(slowTime > 0)
+    {
+      slowTime -= Time.deltaTime;
+      if (slowTime <= 0)
+        speedMultiplier = 1;
+    }
+    
+
     Vector3 wanderDiff = currentWanderPoint - transform.position;
     if(wanderDiff.magnitude < wanderMagnitude)
     {
       CalcWanderPoint();
     }
-    Vector3 newPos = Vector3.MoveTowards(transform.position, currentWanderPoint, speed * Time.deltaTime);
+    Vector3 newPos = Vector3.MoveTowards(transform.position, currentWanderPoint, speed * speedMultiplier * Time.deltaTime);
 
     if ((newPos - transform.position).x > 0)
     {
@@ -104,6 +115,13 @@ public class EnemyMovement : MonoBehaviour {
       Die();
   }
 
+  public virtual void TakeHit(int dmgAmount, float slowMultiplier, float slowDuration)
+  {
+    speedMultiplier = slowMultiplier;
+    slowTime = slowDuration;
+    TakeHit(dmgAmount);
+  }
+
   public virtual void Die()
   {
     //TODO: Set off dying animation
@@ -120,7 +138,8 @@ public class EnemyMovement : MonoBehaviour {
     //TODO: Set off animation for destroying the flower
     am.SetTrigger("Die");
     Destroy(gameObject, 1);
-    Destroy(targetFlower.gameObject);
+    //Destroy(targetFlower.gameObject);
+    targetFlower.Die();
     this.enabled = false;
     targetFlower.enabled = false;
   }

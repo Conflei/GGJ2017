@@ -217,7 +217,7 @@ MonoBehaviour:
       clusterSize: 1
       cycleTime: 1
       delay: 1
-      path: 2
+      path: 3
     - enemy: 0
       enemyCount: 20
       clusterSize: 1
@@ -229,13 +229,13 @@ MonoBehaviour:
       clusterSize: 3
       cycleTime: 2
       delay: 5
-      path: 0
+      path: 3
     - enemy: 0
       enemyCount: 35
       clusterSize: 5
       cycleTime: 3
       delay: 10
-      path: 0
+      path: 3
     - enemy: 1
       enemyCount: 5
       clusterSize: 1

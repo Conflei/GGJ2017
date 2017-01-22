@@ -21,6 +21,9 @@ public class GameController : Singleton<GameController> {
 	public int minPerNight = 0;
 	public int secPerNight = 20;
 
+  public AudioSource daySounds;
+  public AudioSource nightSounds;
+
 	// Use this for initialization
 	public IEnumerator Start () {
 		onDay = true;
@@ -114,6 +117,8 @@ public class GameController : Singleton<GameController> {
 	public IEnumerator BeginNight()
 	{
 		onDay = false;
+    daySounds.Stop();
+    nightSounds.Play();
 		yield return StartCoroutine (GameUI.Instance.ShowNight ());
 		StartCoroutine (GameUI.Instance.BeginTime (minPerNight, secPerNight));
 		Camera.main.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionCurves> ().enabled = false;
@@ -124,6 +129,8 @@ public class GameController : Singleton<GameController> {
 	public IEnumerator BeginDay()
 	{
 		onDay = true;
+    daySounds.Play();
+    nightSounds.Stop();
 		yield return StartCoroutine (GameUI.Instance.ShowDay ());
 		StartCoroutine (GameUI.Instance.BeginTime (minPerDay, secPerDay));
 		Camera.main.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionCurves> ().enabled = true;
