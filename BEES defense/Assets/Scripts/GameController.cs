@@ -39,13 +39,17 @@ public class GameController : Singleton<GameController> {
 		yield return null;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if (occupiedHand) {
-			onHandGO.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			onHandGO.transform.position = new Vector3 (onHandGO.transform.position.x, onHandGO.transform.position.y, 0f);
-		}
+  // Update is called once per frame
+  void Update() {
+    if (occupiedHand) {
+      onHandGO.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+      onHandGO.transform.position = new Vector3(onHandGO.transform.position.x, onHandGO.transform.position.y, 0f);
+    }
 
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      Application.Quit();
+    }
 	}
 
 	public void FreeTileClicked(MapTile myTile)
