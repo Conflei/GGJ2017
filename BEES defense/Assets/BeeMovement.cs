@@ -104,13 +104,11 @@ public class BeeMovement : MonoBehaviour {
           }
         }
       }
-
       
       boids.Normalize();
       boids *= boidsMagnitude * Time.deltaTime;
       boidsDelayRemaining = boidsDelay + Random.Range(-0.1f, 0.1f);
     }
-
 
     newPosition += jitter;
     newPosition += boids;
@@ -118,7 +116,8 @@ public class BeeMovement : MonoBehaviour {
     boidsDebug = boids;
     jitterDebug = jitter;
 
-    
+    newPosition.x = Mathf.Clamp(newPosition.x, -5.76f, 5.76f);
+    newPosition.y = Mathf.Clamp(newPosition.y, -4.48f, 4.48f);
 
     transform.position = newPosition;
     

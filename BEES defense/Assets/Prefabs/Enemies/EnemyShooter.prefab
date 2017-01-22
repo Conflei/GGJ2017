@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 212533132847071140}
   - component: {fileID: 95858397402090324}
   - component: {fileID: 114504430173462834}
-  m_Layer: 0
-  m_Name: Enemy B Walking1
+  - component: {fileID: 58447787345972608}
+  m_Layer: 12
+  m_Name: EnemyShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,12 +37,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835645542965966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8433685, y: -4.340689, z: 0}
+  m_LocalPosition: {x: 0.3623879, y: -4.3455267, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58447787345972608
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1835645542965966}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.24
 --- !u!95 &95858397402090324
 Animator:
   serializedVersion: 3
@@ -70,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbfbb35183bc7b4c96e6e39595687c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 0.1
   majorWaypoints: []
   currentSourcePoint: {x: 0, y: 0, z: 0}
   currentDestinationPoint: {x: 0, y: 0, z: 0}
@@ -82,8 +97,12 @@ MonoBehaviour:
   reloadTimeRemaining: 0
   scanTime: 0.25
   scanTimeRemaining: 0
-  scanRange: 0
-  enemyProjectilePrefab: {fileID: 0}
+  scanRange: 1
+  enemyProjectilePrefab: {fileID: 114488564440523674, guid: 0e3da8a23d74a5b448769a48c4cc7407,
+    type: 2}
+  ProjectileOffset: {x: 0, y: 0.1, z: 0}
+  bTestDie: 0
+  bTestShoot: 0
 --- !u!212 &212533132847071140
 SpriteRenderer:
   m_ObjectHideFlags: 1
