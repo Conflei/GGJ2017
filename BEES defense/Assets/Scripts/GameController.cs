@@ -76,7 +76,7 @@ public class GameController : Singleton<GameController> {
 
 	public void EnableShootingMode(int machine)
 	{
-		if (occupiedHand || shootingMode_)
+		if (occupiedHand || shootingMode_ || BeeHandler.Instance.beeCount_<2)
 			return;
 
 		usingMachineGun_ = machineGuns_ [machine];
@@ -99,7 +99,7 @@ public class GameController : Singleton<GameController> {
 
 	public void ShootTo(MapTile tileScript)
 	{
-
+		BeeHandler.Instance.DiscountBee ();
 		GameUI.Instance.Shake ();
 		ExitShootingMode ();
 		//SHOOOOT

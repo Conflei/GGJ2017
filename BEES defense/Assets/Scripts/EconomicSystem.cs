@@ -30,18 +30,19 @@ public class EconomicSystem : Singleton<EconomicSystem> {
 	{
 		Debug.Log ("Buy Item");
 		if (currentHoney - prices [consu] >= 0) {
-			currentHoney -= prices [consu];
-			GameUI.Instance.SetHoneyCount (currentHoney);
-			Debug.Log ("Element Bought: " + consu + " Money Left: " + currentHoney);
+			
 			if (consu > 0) {
+				currentHoney -= prices [consu];
 				DefensesHandler.Instance.CreateDefense (consu - 1);
 			}
 
 			//New Bee
-			if (consu == 0) {
-				GameObject oldBee = GameObject.FindGameObjectWithTag ("Bee");
-				Instantiate (beePrefab_, oldBee.transform.parent, true);
+			if (consu == 0 && BeeHandler.Instance.beeCount_>1) {
+				currentHoney -= prices [consu];
+				BeeHandler.Instance.MakeBee ();
 			}
+
+			GameUI.Instance.SetHoneyCount (currentHoney);
 			//Instanciate element
 		} else {
 			Debug.Log ("No Enought Money");
