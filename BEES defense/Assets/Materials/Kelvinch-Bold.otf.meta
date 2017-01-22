@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fd86641ff40c848b5b717e394f464485
+timeCreated: 1485061394
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Kelvinch
+  fontNames:
+  - Kelvinch
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6281cfd50a8744c45abaf5e0f1a86028, type: 3}
+  - {fileID: 12800000, guid: 4386c547c6bdc48cba58f85280e8ec78, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

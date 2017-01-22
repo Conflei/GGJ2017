@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
 	public float speed_ = 0.1f;
+	public int damage_ = 10;
+	public bool onTouchKill;
 
 	private Vector3 target_;
 	private Vector3 lastPosition;
@@ -28,7 +30,7 @@ public class Bullet : MonoBehaviour {
 	{
 		//yield return StartCoroutine(FadeOut (this.transform.GetChild (0).GetComponent<SpriteRenderer> ()));
 		yield return StartCoroutine(FadeTo(0f, 1f));
-		//Destroy (this.gameObject, 1f);
+		Destroy (this.gameObject, 1f);
 	}
 
 	public IEnumerator FadeIn(SpriteRenderer Fade){
@@ -76,5 +78,16 @@ public class Bullet : MonoBehaviour {
 			transform.GetChild(0).GetComponent<SpriteRenderer>().color = newColor;
 			yield return null;
 		}
+	}
+
+	public void OnTriggerEnter2D(Collider2D colli)
+	{
+		if (colli.tag != "Alien")
+			return;
+
+		//colli.gameObject.GetComponent<EnemyMovement> ().TakeHit (damage_);
+
+		if (onTouchKill)
+			Destroy (this.gameObject);
 	}
 }

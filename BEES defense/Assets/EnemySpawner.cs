@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : Singleton<EnemySpawner> {
 
   public bool TestLeftPath;
   public bool TestMidPath;
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour {
 
   // Use this for initialization
 	void Start () {
-    SpawnNextWave();
+     SpawnNextWave();
 	}
 
   // Update is called once per frame

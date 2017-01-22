@@ -16,6 +16,7 @@ public class Defense: MonoBehaviour {
 
 	public SpriteRenderer mobSprite;
 	public typeOfDefense myType_;
+	public int maxHP_;
 	public int hp_;
 
 	// Use this for initialization
@@ -25,24 +26,26 @@ public class Defense: MonoBehaviour {
 
 	public void Init (typeOfDefense type) {
 		this.myType_ = type;
-
-		if (this.myType_ == typeOfDefense.Ivy) 
-			this.hp_ = 1;
-		if (this.myType_ == typeOfDefense.Venus) 
-			this.hp_ = 50;
-		if (this.myType_ == typeOfDefense.Turret) 
-			this.hp_ = 20;
-		
+		hpSlider.gameObject.SetActive (false);
+		this.hp_ = maxHP_;
 	}
 
 	public void TakeHit(int damage)
 	{
 		hp_ -= damage;
+		hpSlider.value = maxHP_ / hp_;
 
 		//UI DAMAGE REFRESH
 
 		if (hp_ <= 0)
 			Die ();
+	}
+
+	public void Update()
+	{
+		if (hpSlider.value < 1f) {
+			hpSlider.gameObject.SetActive (true);
+		}
 	}
 
 	public void Die()
