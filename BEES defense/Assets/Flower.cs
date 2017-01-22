@@ -24,10 +24,14 @@ public class Flower : MonoBehaviour {
     generateTimeRemaining -= Time.deltaTime;
     if(generateTimeRemaining <= 0)
     {
-      moneyAmount = generateAmount;
-      am.SetTrigger("Ready");
+      if(moneyAmount == 0)
+      {
+        moneyAmount = generateAmount;
+
+        am.SetTrigger("Ready");
+      }
       
-      GetComponent<SpriteRenderer>().color = Color.yellow;
+      //GetComponent<SpriteRenderer>().color = Color.yellow;
       generateTimeRemaining = generateTime;
     }
 	}
@@ -39,16 +43,13 @@ public class Flower : MonoBehaviour {
     BeeMovement b = other.GetComponent<BeeMovement>();
     if(moneyAmount > 0 && b)
     {
-      GetComponent<SpriteRenderer>().color = Color.white;
+      //GetComponent<SpriteRenderer>().color = Color.white;
       //Add money to the player's cash total
 
       EconomicSystem.Instance.AddHoney(moneyAmount);
       moneyAmount = 0;
       am.SetTrigger("Idle");
-      
-
     }
-
   }
 
   public void Die()
@@ -56,7 +57,8 @@ public class Flower : MonoBehaviour {
     Destroy(gameObject, 1);
     am.SetTrigger("Die");
     GetComponent<AudioSource>().Play();
-    this.enabled = false;
+    //this.enabled = false;
+    Destroy(this);
   }
 
 }

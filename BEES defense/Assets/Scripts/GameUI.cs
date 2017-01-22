@@ -32,6 +32,9 @@ public class GameUI : Singleton<GameUI> {
 	[Header("Day & Night Things")]
 	[SerializeField] public Image courtine;
 
+  [Header("Game over screen")]
+  [SerializeField]
+  public GameOverScreen gameover;
 
 	void Awake()
 	{
@@ -175,4 +178,15 @@ public class GameUI : Singleton<GameUI> {
 		courtine.CrossFadeAlpha (0f, 1f, false);
 		yield return new WaitForSeconds (1f);
 	}
+
+  public void HideGameOver()
+  {
+    gameover.gameObject.SetActive(false);    
+  }
+
+  public void ShowGameOver()
+  {
+    gameover.gameObject.SetActive(true);
+    gameover.waveReached.text = "You reached wave " + wavesCount.ToString();
+  }
 }

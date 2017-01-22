@@ -89,6 +89,7 @@
     <Compile Include="Assets\Flower.cs" />
     <Compile Include="Assets\FlowerBox.cs" />
     <Compile Include="Assets\FlowerBoxManager.cs" />
+    <Compile Include="Assets\GameOverScreen.cs" />
     <Compile Include="Assets\MapTile.cs" />
     <Compile Include="Assets\MouseStuff.cs" />
     <Compile Include="Assets\Scripts\AutoSight.cs" />
