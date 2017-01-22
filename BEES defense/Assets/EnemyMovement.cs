@@ -122,6 +122,7 @@ public class EnemyMovement : MonoBehaviour {
     Destroy(gameObject, 1);
     Destroy(targetFlower.gameObject);
     this.enabled = false;
+    targetFlower.enabled = false;
   }
 
   

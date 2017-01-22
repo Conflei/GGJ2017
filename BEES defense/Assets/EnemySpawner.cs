@@ -4,6 +4,32 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner> {
 
+  public enum EnemyType { Runner, Shooter }
+  public enum Path { Left, Middle, Right, Random}
+
+  [System.Serializable]
+  public class EnemyGroup
+  {
+    [Tooltip("Type of enemy in this group")]
+    public EnemyType enemy = EnemyType.Runner;
+    [Tooltip("Total number of enemies in this group")]
+    public int enemyCount = 5;
+    [Tooltip("Number of enemies to spawn every (cycle time) seconds")]
+    public int clusterSize = 1;
+    [Tooltip("Delay between clusters of enemies")]
+    public float cycleTime = 1;
+    [Tooltip("Delay after wave starts for this group of enemies to begin spawning")]
+    public float delay = 5;
+    [Tooltip("Which path this group should follow")]
+    public Path path = Path.Middle;
+  }
+
+  [System.Serializable]
+  public class EnemyWave
+  {
+    public System.Collections.Generic.List<EnemyGroup> groups;
+  }
+
   public bool TestNextWave;
 
   public bool TestLeftPath;
@@ -20,6 +46,8 @@ public class EnemySpawner : Singleton<EnemySpawner> {
 
   public EnemyMovement runnerPrefab;
   public EnemyMovement shooterPrefab;
+
+  public System.Collections.Generic.List<EnemyWave> waves;
 
   // Use this for initialization
 	void Start () {
@@ -105,47 +133,68 @@ public class EnemySpawner : Singleton<EnemySpawner> {
     {
       Gizmos.DrawLine(rightPath[i], rightPath[i + 1]);
     }
-
   }
   
+  public void SpawnWave(EnemyWave wave, int Multiplier)
+  {
+
+    for(int i = 0; i < Multiplier; i++)
+    {
+      foreach (EnemyGroup group in wave.groups)
+      {
+        EnemyMovement prefab;
+        if (group.enemy == EnemyType.Runner)
+        {
+          prefab = runnerPrefab;
+        }
+        else
+        {
+          prefab = shooterPrefab;
+        }
+
+        if (group.path == Path.Random)
+        {
+          group.path = (Path)Random.Range(0, 3);
+        }
+
+        System.Collections.Generic.List<Vector3> path;
+        if (group.path == Path.Left)
+        {
+          path = leftPath;
+        }
+        else if (group.path == Path.Middle)
+        {
+          path = midPath;
+        }
+        else //if (group.path == Path.Right)
+        {
+          path = rightPath;
+        }
+
+        StartCoroutine(SpawnAfterDelay(path, group.enemyCount, group.clusterSize, prefab, group.cycleTime, group.delay));
+      }
+    }
+  }
 
 
   public void SpawnNextWave()
   {
-    waveNumber += 1;
-    switch(waveNumber)
+    EnemyWave currentWave;
+    int Multiplier = 1;
+    if (waves.Count > waveNumber)
     {
-      case 1:
-        StartCoroutine(SpawnAfterDelay(rightPath, 1, 1, shooterPrefab, 1f, 5f));
-        StartCoroutine(SpawnAfterDelay(rightPath, 10, 1, runnerPrefab, 0.5f, 5f));
-        StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
-        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
-        break;
-      case 2:
-        StartCoroutine(SpawnAfterDelay(leftPath, 20, 1, runnerPrefab, 0.5f, 5f));
-        StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
-        StartCoroutine(SpawnAfterDelay(rightPath, 5, 1, shooterPrefab, 10f, 1f));
-        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
-        break;
-      case 3:
-        StartCoroutine(SpawnAfterDelay(leftPath, 20, 1, runnerPrefab, 0.5f, 5f));
-        StartCoroutine(SpawnAfterDelay(leftPath, 10, 2, runnerPrefab, 2f, 10f));
-        StartCoroutine(SpawnAfterDelay(rightPath, 5, 1, shooterPrefab, 2f, 10f));
-        StartCoroutine(SpawnAfterDelay(midPath, 10, 3, runnerPrefab, 1f, 15f));
-        break;
-      case 4:
-      case 5:
-      case 6:
-      case 7:
-      case 8:
-      case 9:
-      case 10:
-        break;
-      default:
-        //Some kind of scaling, maybe randomized distribution
-
-        break;
+      currentWave = waves[waveNumber];
     }
+    else
+    {
+      Multiplier = 1 + waveNumber - waves.Count;
+      currentWave = waves[waves.Count - 1];
+    }
+
+    SpawnWave(currentWave, Multiplier);
+
+
+    waveNumber += 1;
   }
 
 }

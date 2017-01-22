@@ -30,6 +30,7 @@ public class FlowerBox : MonoBehaviour {
       if (target)
       {
         em.KillFlower(target);
+        GetComponentInParent<FlowerBoxManager>().FlowerDestroyed();
       }
       else
         em.Die();
