@@ -125,6 +125,11 @@ public class GameUI : Singleton<GameUI> {
 		honeyCountText_.text = count + "";
 	}
 
+	public void SetBeeCount(int count)
+	{
+		beeCountText_.text = "x " + count;
+	}
+
 	public void IncreaseWave()
 	{
 		wavesCount++;
