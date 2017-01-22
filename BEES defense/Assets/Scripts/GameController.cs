@@ -23,6 +23,8 @@ public class GameController : Singleton<GameController> {
 
 	public SpriteRenderer bgMap;
 	public Sprite[] dayNightSprites;
+  public AudioSource daySounds;
+  public AudioSource nightSounds;
 
 	// Use this for initialization
 	public IEnumerator Start () {
@@ -33,7 +35,7 @@ public class GameController : Singleton<GameController> {
 		StartCoroutine (GameUI.Instance.BeginTime (minPerDay, secPerDay));
 		yield return null;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (occupiedHand) {
@@ -65,7 +67,7 @@ public class GameController : Singleton<GameController> {
 
 		if (tileScript.Path && onHandGO.GetComponent<Defense> ().myType_ != Defense.typeOfDefense.Ivy)
 			return;
-		
+
 		occupiedHand = false;
 		onHandGO.transform.position = tileScript.tilePosition_;
 		tileScript.Occupied = true;
@@ -88,7 +90,7 @@ public class GameController : Singleton<GameController> {
 
 	public void ExitShootingMode()
 	{
-		
+
 		usingMachineGun_.GetComponent<Animator> ().SetTrigger ("DeactivateTurret");
 		shootingMode_ = false;
 
@@ -97,7 +99,7 @@ public class GameController : Singleton<GameController> {
 
 	public void ShootTo(MapTile tileScript)
 	{
-		
+
 		GameUI.Instance.Shake ();
 		ExitShootingMode ();
 		//SHOOOOT
@@ -117,6 +119,8 @@ public class GameController : Singleton<GameController> {
 	public IEnumerator BeginNight()
 	{
 		onDay = false;
+    daySounds.Stop();
+    nightSounds.Play();
 		yield return StartCoroutine (GameUI.Instance.ShowNight ());
 		StartCoroutine (GameUI.Instance.BeginTime (minPerNight, secPerNight));
 		Camera.main.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionCurves> ().enabled = false;
@@ -131,6 +135,8 @@ public class GameController : Singleton<GameController> {
 	public IEnumerator BeginDay()
 	{
 		onDay = true;
+    daySounds.Play();
+    nightSounds.Stop();
 		yield return StartCoroutine (GameUI.Instance.ShowDay ());
 		StartCoroutine (GameUI.Instance.BeginTime (minPerDay, secPerDay));
 		Camera.main.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionCurves> ().enabled = true;

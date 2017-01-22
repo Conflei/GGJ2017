@@ -10,6 +10,8 @@ public class AutoTurret : Defense {
 	[SerializeField] private AutoSight sight_;
 	[SerializeField] private GameObject bullet_;
 
+	[SerializeField] private Animator myAnim;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -26,6 +28,8 @@ public class AutoTurret : Defense {
 
 	public void Shoot()
 	{
+		delayTimeToShoot_ = 4f;
+		myAnim.SetTrigger ("Shoot");
 		GameObject newBullet = Instantiate (bullet_, this.transform.position, this.transform.rotation) as GameObject;
 		newBullet.GetComponent<Bullet> ().Init (sight_.onSight.transform.position);
 		/*Vector3 lookAtPos = new Vector3 (sight_.onSight.transform.position.x, sight_.onSight.transform.position.y, 0f);
@@ -37,6 +41,11 @@ public class AutoTurret : Defense {
 		newBullet.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 	
 		newBullet.GetComponent<Rigidbody2D> ().add*/
-		delayTimeToShoot_ = 2f;
+
+	}
+
+	public void DieAnim()
+	{
+		myAnim.SetTrigger ("Die");
 	}
 }

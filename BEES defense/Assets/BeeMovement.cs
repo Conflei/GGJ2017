@@ -36,6 +36,7 @@ public class BeeMovement : MonoBehaviour {
 
   private SpriteRenderer sr;
   private Animator am;
+  private AudioSource audio;
 
   // Use this for initialization
   void Start () {
@@ -44,6 +45,8 @@ public class BeeMovement : MonoBehaviour {
     am = GetComponent<Animator>();
     //TODO: This isn't working the way I want - Want to offset the animations so they're not all synchronized
     am.SetTime(Random.value);
+    audio = GetComponent<AudioSource>();
+    audio.PlayDelayed(Random.Range(0f,2f));
   }
 
 

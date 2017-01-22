@@ -51,7 +51,7 @@ public class EnemySpawner : Singleton<EnemySpawner> {
 
   // Use this for initialization
 	void Start () {
-     SpawnNextWave();
+     //SpawnNextWave();
 	}
 
   // Update is called once per frame
@@ -84,6 +84,8 @@ public class EnemySpawner : Singleton<EnemySpawner> {
   {
     for (int i = 0; i < enemyCount; i++)
     {
+		if (GameController.Instance.onDay)
+				 break;
       EnemyMovement em = Instantiate<EnemyMovement>(enemyPrefab);
       em.transform.position = transform.position;
       em.majorWaypoints.Clear();
@@ -99,6 +101,8 @@ public class EnemySpawner : Singleton<EnemySpawner> {
       if (enemyCount - i < enemiesPerWave) enemiesPerWave = enemyCount - i;
       for (int j = 0; j < enemiesPerWave; j++)
       {
+		if (GameController.Instance.onDay)
+					yield break;
         EnemyMovement em = Instantiate<EnemyMovement>(enemyPrefab);
         em.transform.position = transform.position;
         em.majorWaypoints.Clear();

@@ -8,12 +8,21 @@ public class Bullet : MonoBehaviour {
 	public int damage_ = 10;
 	public bool onTouchKill;
 
+	public GameObject mySprite_;
+
 	private Vector3 target_;
 	private Vector3 lastPosition;
 
 	// Use this for initialization
 	public void Init (Vector3 target) {
 		this.target_ = target;
+
+		//Vector3 diff = target - mySprite_.gameObject.transform.position;
+		//diff.Normalize();
+
+		//float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+		//mySprite_.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
 	}
 
 	// Update is called once per frame
@@ -85,7 +94,7 @@ public class Bullet : MonoBehaviour {
 		if (colli.tag != "Alien")
 			return;
 
-		//colli.gameObject.GetComponent<EnemyMovement> ().TakeHit (damage_);
+		colli.gameObject.GetComponent<EnemyMovement> ().TakeHit (damage_);
 
 		if (onTouchKill)
 			Destroy (this.gameObject);

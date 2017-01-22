@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Alien
   - Defense
+  - Bees
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Tiles
   - Bees
   - Flowers
-  - 
-  - 
+  - Towers
+  - Enemies
   - 
   - 
   - 

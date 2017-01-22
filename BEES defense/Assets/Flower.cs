@@ -51,4 +51,12 @@ public class Flower : MonoBehaviour {
 
   }
 
+  public void Die()
+  {
+    Destroy(gameObject, 1);
+    am.SetTrigger("Die");
+    GetComponent<AudioSource>().Play();
+    this.enabled = false;
+  }
+
 }

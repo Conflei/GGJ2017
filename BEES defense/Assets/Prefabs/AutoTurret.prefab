@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212286089484784096}
   - component: {fileID: 61762931677602762}
   - component: {fileID: 114183076825824894}
+  - component: {fileID: 95459274717233522}
   m_Layer: 11
   m_Name: Mob
   m_TagString: Defense
@@ -170,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1727007247409050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17410147, y: -1.529139, z: 0}
+  m_LocalPosition: {x: -0.74882174, y: -1.5117207, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4771291628901828}
@@ -186,8 +187,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173584064154358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.144, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.005, y: 0.192, z: 0}
+  m_LocalScale: {x: 0.3588807, y: 0.3242753, z: 1}
   m_Children: []
   m_Father: {fileID: 4291933787935770}
   m_RootOrder: 1
@@ -232,7 +233,24 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.42}
+  m_Size: {x: 1.34, y: 1.45}
+--- !u!95 &95459274717233522
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173584064154358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d78d4377264243e0b59cfaef0c65eac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114022227331878966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,10 +380,11 @@ MonoBehaviour:
   myType_: 0
   maxHP_: 200
   hp_: 0
-  delayTimeToShoot_: 2
+  delayTimeToShoot_: 10
   bulletSpeed_: 2
   sight_: {fileID: 114942561603465664}
   bullet_: {fileID: 1380762050863402, guid: df01fd0b837e54015bd0b2c79dd647d5, type: 2}
+  myAnim: {fileID: 95459274717233522}
 --- !u!114 &114614254148177260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,7 +493,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300002, guid: 2a36ba841db604aebbf29ae54a7594da, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 94860250b0c294826b49a6b8181596e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

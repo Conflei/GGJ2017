@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58341767409866472}
   - component: {fileID: 50449864513288172}
   - component: {fileID: 95378951912130438}
+  - component: {fileID: 82056915506131674}
   m_Layer: 9
   m_Name: Bee
   m_TagString: Bees
@@ -78,6 +79,86 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!82 &82056915506131674
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979878724733396}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 41a4d764b5e326a43936721d3479b946, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.456
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95378951912130438
 Animator:
   serializedVersion: 3
@@ -116,13 +197,14 @@ MonoBehaviour:
   boidsMagnitude: 2
   boidsDelay: 0.05
   bUseFlockingSineWave: 1
-  SineInput: 21.718275
+  SineInput: 28.173018
   SineFrequencyMult: 2
-  SineValue: 0.26949972
+  SineValue: 0.10114314
   SineMult: 0.5
   jitterAmount: 1
-  boidsDebug: {x: -0.02039381, y: 0.034410644, z: 0}
-  jitterDebug: {x: 0.0004008152, y: 0.0030289881, z: 0}
+  bFacingLeft: 0
+  boidsDebug: {x: 0, y: 0, z: 0}
+  jitterDebug: {x: 0.010303503, y: 0.0043342863, z: 0}
 --- !u!212 &212670337382476184
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -154,7 +236,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300008, guid: afa470fdf7f653b4fb4c6b72f6e8f2a8, type: 3}
+  m_Sprite: {fileID: 21300004, guid: afa470fdf7f653b4fb4c6b72f6e8f2a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0

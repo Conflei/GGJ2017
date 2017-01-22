@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: afa470fdf7f653b4fb4c6b72f6e8f2a8
-timeCreated: 1485045779
+timeCreated: 1485109859
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: bee-1_3
     21300008: bee-1_4
     21300010: bee-1_5
+    21300012: bee-1_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -72,6 +73,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -84,7 +101,7 @@ TextureImporter:
         width: 254
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -97,7 +114,7 @@ TextureImporter:
         width: 254
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -110,7 +127,7 @@ TextureImporter:
         width: 254
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -123,7 +140,7 @@ TextureImporter:
         width: 254
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -136,7 +153,7 @@ TextureImporter:
         width: 254
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -149,7 +166,20 @@ TextureImporter:
         width: 254
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bee-1_6
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 928
+        width: 130
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
